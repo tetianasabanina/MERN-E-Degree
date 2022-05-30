@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 router.get('/snack', SnackController.retrieveSnacks)
-router.get('/snack/type', SnackController.querySnack)
+router.get('/snack/type/:snackType', SnackController.querySnack)
 
 /* POST */
 router.post('/snack/favorite', SnackController.favoriteSnackController)

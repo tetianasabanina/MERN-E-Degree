@@ -25,8 +25,8 @@ SnackModel.query = function() {
   })
 }
 
-SnackModel.querySnack = function() {
-  return SnackModel.find({snack: 'Cupcake'}).exec().then(result => {
+SnackModel.querySnack = function(snackType) {
+  return SnackModel.find({snack: snackType}).exec().then(result => {
     return result
   }).catch(error => {
     return error

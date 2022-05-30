@@ -38,7 +38,8 @@ SnackController.retrieveSnacks = (req,  res, next) => {
 }
 
 SnackController.querySnack = (req,  res, next) => {
-  return SnackModel.querySnack().then(result => {
+  const snackType = req.params.snackType
+  return SnackModel.querySnack(snackType).then(result => {
     return res.json(result)
   }).catch(error => {
     return res.json(error)
