@@ -1,13 +1,14 @@
 const SnackModel = require('../schemas/snack.schema')
 
-SnackModel.createNew = function() {
+SnackModel.createNew = function(snackObject) {
   const newSnack = new SnackModel({
-    snack: 'Cupcake',
-    store: true,
-    savory: false,
-    sweet: true,
-    requiresPrep: true,
-    prepTime:16
+    snack: snackObject.snack,
+    store: snackObject.store,
+    savory: snackObject.savory,
+    sweet: snackObject.sweet,
+    requiresPrep: snackObject.requiresPrep,
+    prepTime:snackObject.prepTime,
+    temperature: snackObject.temperature
   })
 
   return newSnack.save().then(result => {

@@ -3,7 +3,7 @@ var SnackModel = require('../models/snack.model')
 const SnackController = {}
 
 SnackController.createNewSnack = (req,  res, next) => {
-  return SnackModel.createNew().then(result => {
+  return SnackModel.createNew(req.body.snackObject).then(result => {
     return res.json(result)
   }).catch(error => {
     return res.json(error)

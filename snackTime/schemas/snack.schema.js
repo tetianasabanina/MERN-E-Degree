@@ -6,7 +6,6 @@ const SnackSchema = new Schema(
 	{
 		snack: {
       type: String,
-      enum: ['Cupcake', 'Capcakes', 'Taco', 'Candy'],
       validate: {
         validator: value => !/s$/.test(value),
         message: property => `${property.value} should not be plural.`
@@ -15,7 +14,7 @@ const SnackSchema = new Schema(
     prepTime: {
       type: Number,
       default: 15,
-      min: 5,
+      min: 0,
       max: 30
     },
 		store: Boolean,
@@ -25,8 +24,11 @@ const SnackSchema = new Schema(
 			type: Boolean,
       required: function() {return this.snack === 'banana'}
       // required: [true, 'Error: sweet property is required']
-
 		},
+    temperature: {
+      type: String,
+      enum: ['hot', 'cold']
+    }
 	},
 	{
 		timestamps: true,
