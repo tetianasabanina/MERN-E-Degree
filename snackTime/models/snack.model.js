@@ -1,6 +1,6 @@
 const SnackModel = require('../schemas/snack.schema')
 
-SnackModel.Insert = function() {
+SnackModel.createNew = function() {
   const newSnack = new SnackModel({
     snack: 'Cupcake',
     store: true,
@@ -17,7 +17,7 @@ SnackModel.Insert = function() {
   })
 }
 
-SnackModel.query = function() {
+SnackModel.getAll = function() {
   return SnackModel.find({}).exec().then(result => {
     return result
   }).catch(error => {
@@ -25,7 +25,7 @@ SnackModel.query = function() {
   })
 }
 
-SnackModel.querySnack = function(snackType) {
+SnackModel.getByType = function(snackType) {
   return SnackModel.find({snack: snackType}).exec().then(result => {
     return result
   }).catch(error => {

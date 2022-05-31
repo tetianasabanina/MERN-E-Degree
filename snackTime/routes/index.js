@@ -6,12 +6,10 @@ var SnackController = require('../controllers/snack.controller')
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
-router.get('/snack', SnackController.retrieveSnacks)
-router.get('/snack/type/:snackType', SnackController.querySnack)
+router.get('/snack', SnackController.getAllSnacks)
+router.get('/snack/type/:snackType', SnackController.getSnackByType)
 
 /* POST */
-router.post('/snack/favorite', SnackController.favoriteSnackController)
-router.post('/snack/ingredients', SnackController.ingredientController)
 router.post('/snack/new', SnackController.createNewSnack)
 
 
