@@ -6,8 +6,8 @@ SnackModel.createNew = function(snackObject) {
     store: snackObject.store,
     savory: snackObject.savory,
     sweet: snackObject.sweet,
-    requiresPrep: snackObject.requiresPrep,
-    prepTime:snackObject.prepTime,
+    requiresPrep: snackObject.prep,
+    prepTime:snackObject.time,
     temperature: snackObject.temperature,
     ingredients: snackObject.ingredients
   })
@@ -29,6 +29,22 @@ SnackModel.getAll = function() {
 
 SnackModel.getByType = function(snackType) {
   return SnackModel.find({snack: snackType}).exec().then(result => {
+    return result
+  }).catch(error => {
+    return error
+  })
+}
+
+SnackModel.getByIngredient = function(ingredients) {
+  return SnackModel.find({ingredients: {$all: [ingredients]}}).exec().then(result => {
+    return result
+  }).catch(error => {
+    return error
+  })
+}
+
+SnackModel.getByNotHot = function(temp) {
+  return SnackModel.find({temperature: {$in: ['warm', 'cold']}}).exec().then(result => {
     return result
   }).catch(error => {
     return error

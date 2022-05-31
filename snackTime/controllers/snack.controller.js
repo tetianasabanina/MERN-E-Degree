@@ -29,4 +29,23 @@ SnackController.getSnackByType = (req,  res, next) => {
   })
 }
 
+SnackController.getSnackByIngredients = (req, res, next) => {
+  const ingredientList = req.query.list
+  const ingredientArray = ingredientList.split(' ')
+  console.log(ingredientArray)
+  return SnackModel.getByIngredient(ingredientList).then(result => {
+    return res.json(result)
+  }).catch(error => {
+    return res.json(error)
+  })
+}
+
+SnackController.getSnackByNotHot = (req, res, next) => {
+  return SnackModel.getByNotHot().then(result => {
+    return res.json(result)
+  }).catch(error => {
+    return res.json(error)
+  })
+}
+
 module.exports = SnackController

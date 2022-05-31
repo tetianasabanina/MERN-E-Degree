@@ -8,6 +8,9 @@ router.get('/', function(req, res, next) {
 });
 router.get('/snack', SnackController.getAllSnacks)
 router.get('/snack/type/:snackType', SnackController.getSnackByType)
+router.get('/snack/ingredients/', SnackController.getSnackByIngredients)
+router.get('/snack/nothot/', SnackController.getSnackByNotHot)
+
 
 /* POST */
 router.post('/snack/new', SnackController.createNewSnack)

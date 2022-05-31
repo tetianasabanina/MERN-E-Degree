@@ -15,7 +15,7 @@ const SnackSchema = new Schema(
       type: Number,
       default: 15,
       min: 0,
-      max: 30
+      max: 60
     },
 		store: Boolean,
 		requiresPrep: Boolean,
@@ -27,7 +27,7 @@ const SnackSchema = new Schema(
 		},
     temperature: {
       type: String,
-      enum: ['hot', 'cold']
+      enum: ['hot', 'cold', 'warm']
     },
     ingredients: [String]
 	},
