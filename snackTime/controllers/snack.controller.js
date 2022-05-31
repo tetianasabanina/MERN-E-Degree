@@ -48,4 +48,15 @@ SnackController.getSnackByNotHot = (req, res, next) => {
   })
 }
 
+SnackController.getSnackByTags = (req,res, next) =>{
+  const tags = req.query.tags
+  const tagsArray = tags.split(' ')
+  console.log(tagsArray)
+  return SnackModel.getByTags(tagsArray).then(result => {
+    return res.json(result)
+  }).catch(error => {
+    return res.json(error)
+  })
+}
+
 module.exports = SnackController

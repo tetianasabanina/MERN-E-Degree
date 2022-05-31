@@ -10,7 +10,7 @@ router.get('/snack', SnackController.getAllSnacks)
 router.get('/snack/type/:snackType', SnackController.getSnackByType)
 router.get('/snack/ingredients/', SnackController.getSnackByIngredients)
 router.get('/snack/nothot/', SnackController.getSnackByNotHot)
-
+router.get('/snack/tags/', SnackController.getSnackByTags)
 
 /* POST */
 router.post('/snack/new', SnackController.createNewSnack)

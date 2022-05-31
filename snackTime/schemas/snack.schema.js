@@ -29,7 +29,8 @@ const SnackSchema = new Schema(
       type: String,
       enum: ['hot', 'cold', 'warm']
     },
-    ingredients: [String]
+    ingredients: [String], 
+    tags: [String]
 	},
 	{
 		timestamps: true,

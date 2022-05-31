@@ -9,7 +9,8 @@ SnackModel.createNew = function(snackObject) {
     requiresPrep: snackObject.prep,
     prepTime:snackObject.time,
     temperature: snackObject.temperature,
-    ingredients: snackObject.ingredients
+    ingredients: snackObject.ingredients,
+    tags: snackObject.tags
   })
 
   return newSnack.save().then(result => {
@@ -45,6 +46,14 @@ SnackModel.getByIngredient = function(ingredients) {
 
 SnackModel.getByNotHot = function(temp) {
   return SnackModel.find({temperature: {$in: ['warm', 'cold']}}).exec().then(result => {
+    return result
+  }).catch(error => {
+    return error
+  })
+}
+
+SnackModel.getByTags = function(tags) {
+  return SnackModel.find({tags: {$in: tags}}).exec().then(result => {
     return result
   }).catch(error => {
     return error
