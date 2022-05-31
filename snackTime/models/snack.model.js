@@ -8,7 +8,8 @@ SnackModel.createNew = function(snackObject) {
     sweet: snackObject.sweet,
     requiresPrep: snackObject.requiresPrep,
     prepTime:snackObject.prepTime,
-    temperature: snackObject.temperature
+    temperature: snackObject.temperature,
+    ingredients: snackObject.ingredients
   })
 
   return newSnack.save().then(result => {
