@@ -69,4 +69,27 @@ SnackModel.getByTags = function(tags) {
   })
 }
 
+SnackModel.getByPrepRange = function(range) {
+  if (range.low && range.high) {
+    return SnackModel.find({prepTime: {$gt:range.low, $lt: range.high}}).exec().then(result =>{
+      return result
+    }).catch(error => {
+      return error
+    })
+  } else  if (range.low && !range.high) {
+    return SnackModel.find({prepTime: {$gt:range.low}}).exec().then(result =>{
+      return result
+    }).catch(error => {
+      return error
+    })
+  } else if (range.high && !range.low) {
+    return SnackModel.find({prepTime: {$lt:range.high}}).exec().then(result =>{
+      return result
+    }).catch(error => {
+      return error
+    })
+  }
+  
+}
+
 module.exports = SnackModel
