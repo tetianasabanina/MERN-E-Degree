@@ -32,8 +32,9 @@ SnackController.getSnackByType = (req,  res, next) => {
 SnackController.getSnackByIngredients = (req, res, next) => {
   const ingredientList = req.query.list
   const ingredientArray = ingredientList.split(' ')
+  const includes = req.query.includes
   console.log(ingredientArray)
-  return SnackModel.getByIngredient(ingredientList).then(result => {
+  return SnackModel.getByIngredient(ingredientArray, includes).then(result => {
     return res.json(result)
   }).catch(error => {
     return res.json(error)

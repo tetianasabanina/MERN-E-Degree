@@ -36,12 +36,21 @@ SnackModel.getByType = function(snackType) {
   })
 }
 
-SnackModel.getByIngredient = function(ingredients) {
-  return SnackModel.find({ingredients: {$all: [ingredients]}}).exec().then(result => {
-    return result
-  }).catch(error => {
-    return error
-  })
+SnackModel.getByIngredient = function(ingredients, includes) {
+  console.log(typeof includes)
+  if (includes === 'true') {
+    return SnackModel.find({ingredients: {$all: ingredients}}).exec().then(result => {
+      return result
+    }).catch(error => {
+      return error
+    })
+  } else if (includes === 'false') {
+    return SnackModel.find({ingredients: {$nin: ingredients}}).exec().then(result => {
+      return result
+    }).catch(error => {
+      return error
+    })
+  }
 }
 
 SnackModel.getByNotHot = function(temp) {
