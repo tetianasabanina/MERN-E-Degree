@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var SnackController = require('../controllers/snack.controller')
+var UserController = require('../controllers/user.controller')
 
 /* GET */
 router.get('/', function(req, res, next) {
@@ -16,6 +17,7 @@ router.get('/snack/:id', SnackController.getSnackById)
 
 /* POST */
 router.post('/snack/new', SnackController.createNewSnack)
+router.post('/user/new', UserController.createNewUser)
 
 /* PUT */
 router.put('/snack/ingredients/', SnackController.updateSnackIngredients)
