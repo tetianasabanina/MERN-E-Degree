@@ -175,4 +175,13 @@ SnackModel.updateIngredients = function(id, ingredients, operation) {
   }
 };
 
+/* Remove */
+SnackModel.removeSnack = function(id) {
+  return SnackModel.findByIdAndRemove(id).exec().then(result => {
+    return result
+  }).catch(error => {
+    return error
+  })
+}
+
 module.exports = SnackModel;

@@ -21,5 +21,6 @@ router.post('/snack/new', SnackController.createNewSnack)
 router.put('/snack/ingredients/', SnackController.updateSnackIngredients)
 router.put('/snack/', SnackController.updateSnackProperty)
 
-
+/* Delete */
+router.delete('/snack/:id', SnackController.removeSnack)
 module.exports = router;

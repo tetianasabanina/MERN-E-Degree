@@ -100,4 +100,14 @@ SnackController.updateSnackIngredients = (req, res, next) => {
   }) 
 }
 
+/* Remove */
+SnackController.removeSnack = (req, res, next) => {
+  const id = req.params.id
+  return SnackModel.removeSnack(id).then(result => {
+    return res.json(result)
+  }).catch(error => {
+    return res.json(result)
+  })
+}
+
 module.exports = SnackController
