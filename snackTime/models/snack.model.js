@@ -124,16 +124,23 @@ SnackModel.getByPrepRange = function (range) {
 };
 
 /* Update */
-SnackModel.updateIngredients = function(ingredients) {
-	return SnackModel.updateMany(
-		{ingredients: 'sugar' },
-		{ $set: { 'ingredients.$': 'honey' }},
-		{ new: true, multi: true }
-	).exec().then(result => {
-    return result
-  }).catch(error => {
-    return error
-  });
+SnackModel.updateIngredients = function(id, ingredients, operation) {
+  switch (operation) {
+    case 'add':
+      
+    case 'update':
+      return SnackModel.updateMany(
+        {_id: id, ingredients: ingredients.current },
+        { $set: { 'ingredients.$': ingredients.new }},
+        { new: true }
+      ).exec().then(result => {
+        return result
+      }).catch(error => {
+        return error
+      });
+    case 'remove':
+  }
+	
 };
 
 module.exports = SnackModel;

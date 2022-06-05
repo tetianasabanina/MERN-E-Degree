@@ -75,7 +75,7 @@ SnackController.getSnackByPrep = (req,res, next) =>{
 
 /* Update */
 SnackController.updateSnackIngredients = (req, res, next) => {
-  return SnackModel.updateIngredients().then(result => {
+  return SnackModel.updateIngredients(req.body.id, req.body.ingredients, req.body.operation).then(result => {
     return res.json(result)
   }).catch(error => {
     return res.json(error)
