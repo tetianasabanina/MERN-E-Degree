@@ -2,6 +2,7 @@ var SnackModel = require('../models/snack.model')
 
 const SnackController = {}
 
+/* Insert */
 SnackController.createNewSnack = (req,  res, next) => {
   return SnackModel.createNew(req.body.snackObject).then(result => {
     return res.json(result)
@@ -70,6 +71,15 @@ SnackController.getSnackByPrep = (req,res, next) =>{
   }).catch(error => {
     return res.json(error)
   })
+}
+
+/* Update */
+SnackController.updateSnackIngredients = (req, res, next) => {
+  return SnackModel.updateIngredients().then(result => {
+    return res.json(result)
+  }).catch(error => {
+    return res.json(error)
+  }) 
 }
 
 module.exports = SnackController

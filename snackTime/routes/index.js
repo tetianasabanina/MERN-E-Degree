@@ -16,5 +16,8 @@ router.get('/snack/prep/', SnackController.getSnackByPrep)
 /* POST */
 router.post('/snack/new', SnackController.createNewSnack)
 
+/* PUT */
+router.put('/snack/ingredients/', SnackController.updateSnackIngredients)
+
 
 module.exports = router;
