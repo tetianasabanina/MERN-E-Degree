@@ -30,7 +30,11 @@ const SnackSchema = new Schema(
       enum: ['hot', 'cold', 'warm']
     },
     ingredients: [String], 
-    tags: [String]
+    tags: [String],
+    createdBy: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    }
 	},
 	{
 		timestamps: true,

@@ -12,6 +12,7 @@ SnackModel.createNew = function (snackObject) {
 		temperature: snackObject.temperature,
 		ingredients: snackObject.ingredients,
 		tags: snackObject.tags,
+    createdBy: snackObject.user
 	});
 
 	return newSnack
@@ -26,7 +27,8 @@ SnackModel.createNew = function (snackObject) {
 
 /* Retrieve */
 SnackModel.getById = function(id) {
-  return SnackModel.findById(id).exec().then(result => {
+  return SnackModel.findById(id)
+  .populate({path: 'createdBy', select: 'email'}).exec().then(result => {
     return result
   }).catch(error => { return error})
 }
