@@ -13,6 +13,15 @@ SnackController.createNewSnack = (req,  res, next) => {
 
 
 /* Retrieve */
+SnackController.getSnackById = (req,  res, next) => {
+  const id = req.params.id
+  return SnackModel.getById(id).then(result => {
+    return res.json(result)
+  }).catch(error => {
+    return res.json(error)
+  })
+}
+
 SnackController.getAllSnacks = (req,  res, next) => {
   return SnackModel.getAll().then(result => {
     return res.json(result)
@@ -74,6 +83,15 @@ SnackController.getSnackByPrep = (req,res, next) =>{
 }
 
 /* Update */
+SnackController.updateSnackProperty = (req, res, next) => {
+  const id=req.body.id
+  const value = req.body.update
+  return SnackModel.updateSnackProperty(id, value). then(result => {
+    return res.json(result)
+  }).catch(error => {
+    return res.json(error)
+  })
+}
 SnackController.updateSnackIngredients = (req, res, next) => {
   return SnackModel.updateIngredients(req.body.id, req.body.ingredients, req.body.operation).then(result => {
     return res.json(result)

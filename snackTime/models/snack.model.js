@@ -25,6 +25,12 @@ SnackModel.createNew = function (snackObject) {
 };
 
 /* Retrieve */
+SnackModel.getById = function(id) {
+  return SnackModel.findById(id).exec().then(result => {
+    return result
+  }).catch(error => { return error})
+}
+
 SnackModel.getAll = function () {
 	return SnackModel.find({})
 		.exec()
@@ -124,6 +130,16 @@ SnackModel.getByPrepRange = function (range) {
 };
 
 /* Update */
+SnackModel.updateSnackProperty = function(id, value) {
+  return SnackModel.updateOne(
+    {_id: id},
+    {$set: value}
+  ).exec().then(result => {
+    return result
+  }).catch(error => {
+    return error
+  })
+}
 SnackModel.updateIngredients = function(id, ingredients, operation) {
   switch (operation) {
     case 'add':

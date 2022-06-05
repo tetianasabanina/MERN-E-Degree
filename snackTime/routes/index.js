@@ -12,12 +12,14 @@ router.get('/snack/ingredients/', SnackController.getSnackByIngredients)
 router.get('/snack/nothot/', SnackController.getSnackByNotHot)
 router.get('/snack/tags/', SnackController.getSnackByTags)
 router.get('/snack/prep/', SnackController.getSnackByPrep)
+router.get('/snack/:id', SnackController.getSnackById)
 
 /* POST */
 router.post('/snack/new', SnackController.createNewSnack)
 
 /* PUT */
 router.put('/snack/ingredients/', SnackController.updateSnackIngredients)
+router.put('/snack/', SnackController.updateSnackProperty)
 
 
 module.exports = router;
