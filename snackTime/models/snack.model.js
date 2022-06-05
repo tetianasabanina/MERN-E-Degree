@@ -125,10 +125,10 @@ SnackModel.getByPrepRange = function (range) {
 
 /* Update */
 SnackModel.updateIngredients = function(ingredients) {
-	return SnackModel.updateOne(
-		{ingredients: 'butter' },
-		{ $set: { 'ingredients.$': 'margarine' }},
-		{ new: true }
+	return SnackModel.updateMany(
+		{ingredients: 'sugar' },
+		{ $set: { 'ingredients.$': 'honey' }},
+		{ new: true, multi: true }
 	).exec().then(result => {
     return result
   }).catch(error => {
