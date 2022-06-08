@@ -8,7 +8,7 @@ UserModel.createNew = function(userObj) {
     email: userObj.email
   })
   return newUser.save().then(result => {
-    console.log("model", result)
+    // console.log("model", result)
     return result
   }).catch(error => {
     return error
