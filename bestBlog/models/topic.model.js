@@ -39,8 +39,8 @@ TopicModel.getAll = function () {
 		});
 };
 
-TopicModel.getByType = function (topicType) {
-	return TopicModel.find({ topicName: topicType })
+TopicModel.getByName = function (topicName) {
+	return TopicModel.find({ topicName: topicName })
 		.exec()
 		.then((result) => {
 			return result;
@@ -50,8 +50,9 @@ TopicModel.getByType = function (topicType) {
 		});
 };
 
-TopicModel.getByNotPrivate = function (temp) {
-	return TopicModel.find({ private: false })
+TopicModel.getByAccessType = function (type) {
+  if (type === "true") {
+    return TopicModel.find({ private: true })
 		.exec()
 		.then((result) => {
 			return result;
@@ -59,7 +60,17 @@ TopicModel.getByNotPrivate = function (temp) {
 		.catch((error) => {
 			return error;
 		});
-};
+  } else if (type === "false") {
+    return TopicModel.find({ private: false })
+		.exec()
+		.then((result) => {
+			return result;
+		})
+		.catch((error) => {
+			return error;
+		});
+  };
+}
 
 TopicModel.getByTags = function (tags) {
 	return TopicModel.find({ tags: { $in: tags } })

@@ -30,17 +30,18 @@ TopicController.getAllTopics = (req,  res, next) => {
   })
 }
 
-TopicController.getTopicByType = (req,  res, next) => {
-  const topicType = req.params.topicType
-  return TopicModel.getByType(topicType).then(result => {
+TopicController.getTopicByName = (req,  res, next) => {
+  const topicName = req.params.topicName
+  return TopicModel.getByName(topicName).then(result => {
     return res.json(result)
   }).catch(error => {
     return res.json(error)
   })
 }
 
-TopicController.getTopicByNotPrivate = (req, res, next) => {
-  return TopicModel.getByNotPrivate().then(result => {
+TopicController.getTopicByAccessType = (req, res, next) => {
+  const type = req.params.type
+  return TopicModel.getByAccessType(type).then(result => {
     return res.json(result)
   }).catch(error => {
     return res.json(error)

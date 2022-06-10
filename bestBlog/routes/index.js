@@ -11,8 +11,8 @@ router.get('/', function(req, res, next) {
 /* GET */
 router.get('/user', UserController.getAllUsers)
 router.get('/topic', TopicController.getAllTopics)
-router.get('/topic/type/:topicType', TopicController.getTopicByType)
-router.get('/topic/notprivate/', TopicController.getTopicByNotPrivate)
+router.get('/topic/name/:topicName', TopicController.getTopicByName)
+router.get('/topic/private/:type', TopicController.getTopicByAccessType)
 router.get('/topic/tags/', TopicController.getTopicByTags)
 router.get('/topic/:id', TopicController.getTopicById)
 

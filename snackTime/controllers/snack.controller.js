@@ -74,7 +74,6 @@ SnackController.getSnackByPrep = (req,res, next) =>{
   const lowRange = req.query.lowRange
   const highRange = req.query.highRange
   const rangeObject = {low: parseInt(lowRange), high: parseInt(highRange)}
-  console.log()
   return SnackModel.getByPrepRange(rangeObject).then(result => {
     return res.json(result)
   }).catch(error => {
